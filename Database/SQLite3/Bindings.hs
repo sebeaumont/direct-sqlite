@@ -103,6 +103,7 @@ module Database.SQLite3.Bindings (
 
     -- * Extensions
     c_sqlite3_enable_load_extension,
+    c_sqlite3_load_extension,
 
     -- * Write-Ahead Log Commit Hook
     c_sqlite3_wal_hook,
@@ -492,6 +493,10 @@ foreign import ccall "&sqlite3_free"
 -- | <https://sqlite.org/c3ref/enable_load_extension.html>
 foreign import ccall "sqlite3_enable_load_extension"
     c_sqlite3_enable_load_extension :: Ptr CDatabase -> Bool -> IO CError
+
+-- | <https://sqlite.org/c3ref/load_extension.html>
+foreign import ccall "sqlite3_load_extension"
+    c_sqlite3_load_extension :: Ptr CDatabase -> CString -> CString -> Ptr CString -> IO CError
 
 -- | <https://www.sqlite.org/c3ref/wal_hook.html>
 foreign import ccall unsafe "sqlite3_wal_hook"

@@ -60,6 +60,7 @@ module Database.SQLite3.Direct (
 
     -- * control loading of extensions
     setLoadExtensionEnabled,
+    loadExtension,
 
     -- * Result statistics
     lastInsertRowId,
@@ -848,6 +849,14 @@ deleteCollation (Database db) (Utf8 name) =
 setLoadExtensionEnabled :: Database -> Bool -> IO (Either Error ())
 setLoadExtensionEnabled (Database db) enabled =
     toResult () <$> c_sqlite3_enable_load_extension db enabled
+
+-- | <https://www.sqlite.org/c3ref/enable_load_extension.html>
+-- 
+-- Load an extension module with default entry point.
+loadExtension :: Database -> Utf8 -> IO (Either (Error, Utf8) ())
+loadExtension (Database db) (Utf8 lib) = 
+    BS.useAsCString lib $ \lib' ->
+        withErrorMessagePtr (c_sqlite3_load_extension db lib' nullPtr)
 
 -- | <https://www.sqlite.org/c3ref/blob_open.html>
 --
