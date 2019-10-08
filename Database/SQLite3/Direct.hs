@@ -140,7 +140,7 @@ import Database.SQLite3.Bindings
 import qualified Data.ByteString            as BS
 import qualified Data.ByteString.Unsafe     as BSU
 import qualified Data.ByteString.Internal   as BSI
-import Data.Semigroup       (Semigroup)
+--import Data.Semigroup       (Semigroup)
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as T
 import Control.Exception as E

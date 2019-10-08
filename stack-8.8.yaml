@@ -1,8 +1,5 @@
 resolver: nightly-2019-10-07
 
-# for semigroups-0.19.1
-allow-newer: true
-
 packages:
 - .
 
