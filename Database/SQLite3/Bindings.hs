@@ -495,7 +495,7 @@ foreign import ccall "sqlite3_enable_load_extension"
     c_sqlite3_enable_load_extension :: Ptr CDatabase -> Bool -> IO CError
 
 -- | <https://sqlite.org/c3ref/load_extension.html>
-foreign import ccall "sqlite3_load_extension"
+foreign import ccall unsafe "sqlite3_load_extension"
     c_sqlite3_load_extension :: Ptr CDatabase -> CString -> CString -> Ptr CString -> IO CError
 
 -- | <https://www.sqlite.org/c3ref/wal_hook.html>
